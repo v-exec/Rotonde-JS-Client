@@ -1,0 +1,43 @@
+{
+  "profile":
+  {
+    "name":"vi",
+    "location":"Montreal",
+    "position":"45.5088400, -73.5878100",
+    "color":"#777777",
+    "avatar":"http://rotonde.v-os.ca/images/vi.png",
+    "topics": ["audio", "visual", "code", "abstract", "personal"]
+  },
+  "feed":
+  [
+  	{
+      "time":"1503645573",
+      "text":"Spent yesterday messing about in lubuntu. Lots of non-functional, but aesthetic tweaks were made. Who would've known terminals could look this good in pastel?",
+      "media":"http://rotonde.v-os.ca/images/2.png",
+      "topic": "code"
+    },
+    {
+      "time":"1503331954",
+      "text":"Made (primarily front-end) modifications to electricgecko's PHP client for Rotonde.",
+      "ref" :"rotonde.electricgecko.de 1498417023",
+      "media":"http://rotonde.v-os.ca/images/1.png",
+      "url": "https://github.com/v-exec/Rotonde-Client",
+      "topic": "code"
+    }
+  ],
+  "portal":
+  [
+    "rotonde.cblgh.org",
+    "rotonde.xxiivv.com",
+    "rotonde.attilam.com",
+    "rotonde.anxl.faith",
+    "rotonde.electricgecko.de",
+    "rotonde-eswat.hashbase.io",
+    "brennan-ltkmn.hashbase.io",
+    "rotonde-ciel.hashbase.io",
+    "rotonde.neufv.website",
+    "rotonde-joshavanier.hashbase.io",
+    "rotonde-somnius.hashbase.io",
+    "rotonde.v-os.ca"
+  ]
+}
