@@ -1,7 +1,7 @@
 var postNum = 0;
 
-//load feed
-function loadFeed() {
+//load profile
+function loadProfile() {
 	//load json file
 	readJSON("../feed.json", function(text) {
 		var myFeed = JSON.parse(text);
@@ -14,6 +14,7 @@ function loadFeed() {
 function loadFeeds(myFeed) {
 	var following = myFeed.portal;
 
+	//for every feed
 	for (var i = 0; i < following.length; i++) {
 		readJSON("http://" + following[i], function(text) {
 			var user = JSON.parse(text);
@@ -165,10 +166,12 @@ function loadPosts(user) {
 			listEntry.append(footer);
 
 			//append post
+			listEntry.setAttribute('postTime', posts[i].time);
 			timeline.append(listEntry);
 
 			postNum++;
 		}
+		orderPosts();
 	}
 }
 
@@ -182,17 +185,35 @@ function setTitle(myFeed) {
 //reads JSON file
 function readJSON(file, callback) {
 	var rawFile = new XMLHttpRequest();
-    rawFile.overrideMimeType("application/json");
-    rawFile.open("GET", file, true);
-    rawFile.onreadystatechange = function() {
-        if (rawFile.readyState === 4 && rawFile.status == "200") {
-            callback(rawFile.responseText);
-        }
-    }
-    rawFile.send(null);
+	rawFile.overrideMimeType("application/json");
+	rawFile.open("GET", file, true);
+	rawFile.onreadystatechange = function() {
+		if (rawFile.readyState === 4 && rawFile.status == "200") {
+			callback(rawFile.responseText);
+		}
+	}
+	rawFile.send(null);
+}
+
+//orders posts
+function orderPosts() {
+	var timeline = document.getElementById('timeline');
+	var children = timeline.children;
+
+	//call array method to slice children into actual array
+	var properChildren = [].slice.call(children);
+
+	properChildren.sort(function (a, b) {
+		if (a.getAttribute('postTime') == b.getAttribute('postTime')) return 0;
+		return (a.getAttribute('postTime') > b.getAttribute('postTime')) ? -1 : 1;
+	});
+
+	for (i = 0; i < properChildren.length; i++) {
+		timeline.appendChild(properChildren[i]);
+	}
 }
 
 //load feed on window loaded
 window.addEventListener("DOMContentLoaded", function() {
-	loadFeed();
+	loadProfile();
 });

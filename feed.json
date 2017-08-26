@@ -5,24 +5,26 @@
     "location":"Montreal",
     "position":"45.5088400, -73.5878100",
     "color":"#777777",
-    "avatar":"http://rotonde.v-os.ca/images/vi.png",
-    "topics": ["audio", "visual", "code", "abstract", "personal"]
+    "avatar":"http://rotonde.v-os.ca/images/vi.png"
   },
   "feed":
   [
   	{
+      "time":"1503708650",
+      "text":"Made a javascript client for Rotonde. Working on making it as functional as possible, have a few things to iron out. I plan on implementing 'comments' / 'replies' once that's done. Repo up.",
+      "url":"https://github.com/v-exec/Rotonde-JS-Client"
+    },
+  	{
       "time":"1503645573",
       "text":"Spent yesterday messing about in lubuntu. Lots of non-functional, but aesthetic tweaks were made. Who would've known terminals could look this good in pastel?",
-      "media":"http://rotonde.v-os.ca/images/2.png",
-      "topic": "code"
+      "media":"http://rotonde.v-os.ca/images/2.png"
     },
     {
       "time":"1503331954",
       "text":"Made (primarily front-end) modifications to electricgecko's PHP client for Rotonde.",
       "ref" :"rotonde.electricgecko.de 1498417023",
       "media":"http://rotonde.v-os.ca/images/1.png",
-      "url": "https://github.com/v-exec/Rotonde-Client",
-      "topic": "code"
+      "url": "https://github.com/v-exec/Rotonde-PHP-Client"
     }
   ],
   "portal":

@@ -73,6 +73,7 @@ p {
 }
 
 .post-link {
+	padding-top: 1px;
 	float: right;
 }
 
@@ -130,11 +131,11 @@ p {
 /*media*/
 @media (max-width: 900px) {
 	#body {
-		margin-top: 0;
+		margin-top: 20px;
 		margin-bottom: 0;
 	}
 
-	.post-video {
-		height: auto;
+	#title-card {
+		margin-left: 40px;
 	}
 }
