@@ -14,6 +14,5 @@ My personal profile information is available at http://rotonde.v-os.ca.
 
 ### To Do
 
-- Fix foreign ajax connection error
-- Order by timestamp
+- Fix cross-domain connection blocks
 - Add comments
