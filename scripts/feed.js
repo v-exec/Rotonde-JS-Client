@@ -185,10 +185,13 @@ function setTitle(myFeed) {
 //reads JSON file
 function readJSON(file, callback) {
 	var rawFile = new XMLHttpRequest();
-	rawFile.overrideMimeType("application/json");
-	rawFile.open("GET", file, true);
+	rawFile.overrideMimeType('application/json');
+	rawFile.withCredentials = false;
+	rawFile.open('GET', file, true);
+	//rawFile.setRequestHeader('Content-Type', 'application/json');
+	//rawFile.setRequestHeader('Access-Control-Allow-Origin', '*');
 	rawFile.onreadystatechange = function() {
-		if (rawFile.readyState === 4 && rawFile.status == "200") {
+		if (rawFile.readyState === 4 && rawFile.status == '200') {
 			callback(rawFile.responseText);
 		}
 	}

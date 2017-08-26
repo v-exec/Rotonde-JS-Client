@@ -13,7 +13,6 @@ body {
 
 a {
 	color: #888;
-	text-decoration: none;
 }
 
 a:hover{
@@ -72,16 +71,6 @@ p {
 	border-radius: 3px;
 }
 
-.post-link {
-	padding-top: 1px;
-	float: right;
-}
-
-.user-entry a {
-	text-decoration: underline;
-	margin-left: 10px;
-}
-
 /*footer*/
 .user-footer {
 	display: block;
@@ -112,6 +101,11 @@ p {
 
 .user-name {
 	color: #000;
+}
+
+.post-link {
+	padding-top: 1px;
+	float: right;
 }
 
 .toggle {

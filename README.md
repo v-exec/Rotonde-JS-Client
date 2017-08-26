@@ -14,5 +14,5 @@ My personal profile information is available at http://rotonde.v-os.ca.
 
 ### To Do
 
-- Fix cross-domain connection blocks
-- Add comments
+- Add replies
+- Add video support
