@@ -5,8 +5,10 @@ function loadProfile() {
 	//load json file
 	readJSON("../feed.json", function(text) {
 		var myFeed = JSON.parse(text);
-		setTitle(myFeed);
-		loadFeeds(myFeed);
+		if (myFeed) {
+			setTitle(myFeed);
+			loadFeeds(myFeed);
+		}
 	});
 }
 
@@ -16,9 +18,20 @@ function loadFeeds(myFeed) {
 
 	//for every feed
 	for (var i = 0; i < following.length; i++) {
+
+		//check both http and https
 		readJSON("http://" + following[i], function(text) {
-			var user = JSON.parse(text);
-			loadPosts(user);
+			if (text != null) {
+				var user = JSON.parse(text);
+				loadPosts(user);
+			}
+		});
+
+		readJSON("https://" + following[i], function(text) {
+			if (text != null) {
+				var user = JSON.parse(text);
+				loadPosts(user);
+			}
 		});
 	}
 }
@@ -188,14 +201,14 @@ function readJSON(file, callback) {
 	rawFile.overrideMimeType('application/json');
 	rawFile.withCredentials = false;
 	rawFile.open('GET', file, true);
-	//rawFile.setRequestHeader('Content-Type', 'application/json');
-	//rawFile.setRequestHeader('Access-Control-Allow-Origin', '*');
 	rawFile.onreadystatechange = function() {
-		if (rawFile.readyState === 4 && rawFile.status == '200') {
+		if (rawFile.readyState === 4 && rawFile.status == 200) {
 			callback(rawFile.responseText);
+		} else {
+			callback(null);
 		}
 	}
-	rawFile.send(null);
+	rawFile.send();
 }
 
 //orders posts
