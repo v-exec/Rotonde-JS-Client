@@ -62,7 +62,7 @@ function loadPosts(user) {
 					var match = posts[i].media.match(regExp);
 
 					var video = document.createElement('iframe');
-					video.src = 'https://www.youtube-nocookie.com/embed/' + match[2] + '?rel=0&amp;showinfo=0" frameborder="0';
+					video.src = 'https://www.youtube-nocookie.com/embed/' + match[2] + '?rel=0&amp;showinfo=0"';
 					video.className = 'post-video';
 					post.append(video);
 				} else {
