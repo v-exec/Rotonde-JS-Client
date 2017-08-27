@@ -20,7 +20,7 @@ function loadFeeds(myFeed) {
 	for (var i = 0; i < following.length; i++) {
 
 		//check both http and https
-		readJSON("http://" + following[i], function(text) {
+		readJSON("//" + following[i], function(text) {
 			if (text != null) {
 				var user = JSON.parse(text);
 				loadPosts(user);
@@ -54,12 +54,24 @@ function loadPosts(user) {
 			var post = document.createElement('div');
 			post.className = 'user-entry';
 
-			//image
+			//media
 			if (posts[i].media) {
-				var image = document.createElement('img');
-				image.src = posts[i].media;
-				image.className = 'post-image';
-				post.append(image);
+				if (posts[i].media.indexOf('youtube') !== -1) {
+					//video
+					var regExp = /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+					var match = posts[i].media.match(regExp);
+
+					var video = document.createElement('iframe');
+					video.src = 'https://www.youtube-nocookie.com/embed/' + match[2] + '?rel=0&amp;showinfo=0" frameborder="0';
+					video.className = 'post-video';
+					post.append(video);
+				} else {
+					//image
+					var image = document.createElement('img');
+					image.src = posts[i].media;
+					image.className = 'post-image';
+					post.append(image);
+				}
 			}
 
 			//text
@@ -166,8 +178,6 @@ function loadPosts(user) {
 			source.style = 'display: none';
 			var sourceText = document.createTextNode(JSON.stringify(posts[i]));
 			source.append(sourceText);
-			
-			//reference (todo: handle comments)
 
 			//append user info
 			footer.append(userInfo);
@@ -178,8 +188,16 @@ function loadPosts(user) {
 			//append footer
 			listEntry.append(footer);
 
+			//set post time attribute (handle ref as comment)
+			if (posts[i].ref) {
+				listEntry.className = 'post reply';
+				var reply = posts[i].ref.split(' ');
+				listEntry.setAttribute('postTime', reply[1] + '-' + posts[i].time);
+			} else {
+				listEntry.setAttribute('postTime', posts[i].time + '-A');
+			}
+
 			//append post
-			listEntry.setAttribute('postTime', posts[i].time);
 			timeline.append(listEntry);
 
 			postNum++;

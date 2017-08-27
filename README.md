@@ -14,6 +14,5 @@ My personal profile information is available at http://rotonde.v-os.ca.
 
 ### To Do
 
-- Add video support
-- Fix redundant protocol connections 
-- Add replies
+- Fix redundant protocol connections
+- Add nested replies
