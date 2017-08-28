@@ -46,15 +46,10 @@ p {
 	margin-top: 20px;
 }
 
-.post,
-.reply {
+.post {
 	margin-bottom: 1px;
 	padding: 40px;
 	background-color: #fff;
-}
-
-.reply {
-	margin-left: 40px;
 }
 
 .divider {

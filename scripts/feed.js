@@ -126,29 +126,18 @@ function loadPosts(user) {
 			userInfo.append(nameAndLocation);
 
 			//time
-			var timeHolder = document.createElement('li');
-			timeHolder.className = 'time';
-
 			if (posts[i].time) {
-				//get string as time
-				var stringTime = String(posts[i].time);
+				var timeHolder = document.createElement('li');
+				timeHolder.className = 'time';
 
-				//if delimiter is present (-) (assuming more information is present after timestamp), split at delimiter and take timestamp
-				if (stringTime.indexOf('-') !== -1) {
-					var properTime = stringTime.split('-');
-					properTime = properTime[0];
-
-					var newDate = new Date();
-					newDate.setTime(properTime*1000);
-					dateString = newDate.toUTCString();
-				} else {
-					var newDate = new Date();
-					newDate.setTime(posts[i].time*1000);
-					dateString = newDate.toUTCString();
-				}
+				var newDate = new Date();
+				newDate.setTime(posts[i].time*1000);
+				dateString = newDate.toUTCString();
 
 				var time = document.createTextNode(dateString);
 				timeHolder.append(time);
+
+				listEntry.setAttribute('postTime', posts[i].time);
 			}
 
 			//toggle
@@ -167,7 +156,6 @@ function loadPosts(user) {
 				});
 			})(postNum);
 
-			
 			timeHolder.append(toggle);
 			userInfo.append(timeHolder);
 
@@ -198,15 +186,6 @@ function loadPosts(user) {
 
 			//append footer
 			listEntry.append(footer);
-
-			//set post time attribute (handle ref as comment)
-			if (posts[i].ref) {
-				listEntry.className = 'post reply';
-				var reply = posts[i].ref.split(' ');
-				listEntry.setAttribute('postTime', reply[1] + '-' + posts[i].time);
-			} else {
-				listEntry.setAttribute('postTime', posts[i].time + '-A');
-			}
 
 			//append post
 			timeline.append(listEntry);
