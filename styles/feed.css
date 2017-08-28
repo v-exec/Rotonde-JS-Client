@@ -25,6 +25,25 @@ p {
 	margin: 0;
 }
 
+::-moz-selection {
+	color: #000;
+	background: #eee;
+}
+
+::selection {
+	color: #000;
+	background: #eee;
+}
+
+::-webkit-scrollbar {
+	width: 6px;
+	background-color: #eee;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: #bbb;
+}
+
 /*body*/
 #body {
 	max-width: 900px;
