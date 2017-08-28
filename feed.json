@@ -27,6 +27,12 @@
       "url": "https://github.com/v-exec/Rotonde-PHP-Client"
     }
   ],
+  "dialog":
+  [
+    {
+
+    }
+  ],
   "portal":
   [
     "rotonde.cblgh.org",
@@ -42,9 +48,6 @@
     "rotonde.v-os.ca",
     "rotonde-somnius.hashbase.io",
     "rotonde.monochromatic.co",
-    "johnakers.network/rotonde.json",
-    "rotonde.brennan.pizza/feed.json",
-    "rotonde-joshavanier.hashbase.io",
-    "rotonde.brennan.pizza"
+    "rotonde-joshavanier.hashbase.io"
   ]
 }

@@ -35,7 +35,10 @@ function loadPosts(user) {
 
 	//check if user has feed
 	if (user.feed) {
+		//limit post count to 30
 		var postCount = user.feed.length;
+		if (postCount > 30) postsCount = 30;
+
 		var posts = user.feed;
 
 		//for each post
@@ -126,12 +129,27 @@ function loadPosts(user) {
 			var timeHolder = document.createElement('li');
 			timeHolder.className = 'time';
 
-			var newDate = new Date();
-			newDate.setTime(posts[i].time*1000);
-			dateString = newDate.toUTCString();
+			if (posts[i].time) {
+				//get string as time
+				var stringTime = String(posts[i].time);
 
-			var time = document.createTextNode(dateString);
-			timeHolder.append(time);
+				//if delimiter is present (-) (assuming more information is present after timestamp), split at delimiter and take timestamp
+				if (stringTime.indexOf('-') !== -1) {
+					var properTime = stringTime.split('-');
+					properTime = properTime[0];
+
+					var newDate = new Date();
+					newDate.setTime(properTime*1000);
+					dateString = newDate.toUTCString();
+				} else {
+					var newDate = new Date();
+					newDate.setTime(posts[i].time*1000);
+					dateString = newDate.toUTCString();
+				}
+
+				var time = document.createTextNode(dateString);
+				timeHolder.append(time);
+			}
 
 			//toggle
 			var toggle = document.createElement('a');
