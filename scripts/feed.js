@@ -26,13 +26,6 @@ function loadFeeds(myFeed) {
 				loadPosts(user);
 			}
 		});
-
-		readJSON("https://" + following[i], function(text) {
-			if (text != null) {
-				var user = JSON.parse(text);
-				loadPosts(user);
-			}
-		});
 	}
 }
 
@@ -222,7 +215,26 @@ function readJSON(file, callback) {
 	rawFile.onreadystatechange = function() {
 		if (rawFile.readyState === 4 && rawFile.status == 200) {
 			callback(rawFile.responseText);
-		} else {
+		} else if (rawFile.readyState === 4) {
+			//if load didn't work, try to request url with https protocol
+			readJSONEncrypted(file, function(text) {
+				callback(text);
+			});
+		}
+	}
+	rawFile.send();
+}
+
+//reads JSON file with https protocol
+function readJSONEncrypted(file, callback) {
+	var rawFile = new XMLHttpRequest();
+	rawFile.overrideMimeType('application/json');
+	rawFile.withCredentials = false;
+	rawFile.open('GET', 'https:' + file, true);
+	rawFile.onreadystatechange = function() {
+		if (rawFile.readyState === 4 && rawFile.status == 200) {
+			callback(rawFile.responseText);
+		} else if (rawFile.readyState === 4) {
 			callback(null);
 		}
 	}
