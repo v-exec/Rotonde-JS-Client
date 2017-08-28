@@ -15,5 +15,3 @@ My personal profile information is available at http://rotonde.v-os.ca.
 ### To Do
 
 - Fix inappropriate protocol requests
-- Add nested replies
-- Add 'likes'
