@@ -5,6 +5,12 @@ The _Rotonde Web Client_ is a javascript client that fetches self-hosted JSON fi
 A running instance of my Rotonde feed is available at http://rotonde.v-os.ca/feed.
 My personal profile information is available at http://rotonde.v-os.ca.
 
+### Credits
+
+- Rotonde standard: [Rotonde Network](https://github.com/Rotonde)
+
+- Feed architecture inspiration + footer design: [ElectricGecko's PHP Client](https://github.com/Rotonde/client-php)
+
 ### Installation
 
 1. Download this repo.
